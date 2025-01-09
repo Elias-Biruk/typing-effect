@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Effect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div id="input-section">
+      <textarea id="text-input" placeholder="Paste your text or code here..."></textarea>
+      <button id="toggle-start-stop-button"  aria-label="Start typing effect">Start Typing Effect</button>
+      <button id="toggle-pause-resume-button" disabled aria-label="Pause typing">Pause Typing</button>
+      <button id="clear-button" aria-label="Clear output">Clear Output</button>
+    </div>
+
+    <div id="output-section">
+      <div id="output"></div><span class="cursor"></span>
+    </div>    
+  </div>
+
+  <div id="speed-control-section">
+    <label for="speed-slider" id="speed-label">Typing Speed: <span id="speed-value">50ms</span></label>
+    <input type="range" id="speed-slider" min="10" max="200" value="50">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+/* General Body Styles */
+/* General Body Styles */
+body {
+    background-color: #1e1e1e;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Prevent outer scrollbar */
+    font-size: 1.2rem;
+    box-sizing: border-box;
+}
+
+/* Create a fully resizable container for both sections */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    width: 90%;
+    height: 80%;
+    margin-top: 40px;
+    /*resize: both;
+    overflow: auto; /* Ensure scrollbars only appear within the container */
+}
+
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column; /* Stack the sections vertically on small screens */
+    }
+    #input-section, #output-section {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+    body {
+        font-size: 1rem;
+    }
+}
+
+/* Input Section */
+#input-section {
+    text-align: center;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    background-color: #000;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Match output box shadow */
+    resize: both;
+    overflow: auto; /* Ensure scrolling */
+    box-sizing: border-box; /* Match output box-sizing */
+    padding: 20px; /* Match output padding */
+}
+
+/* Input Text Area */
+/* Improved Input Text Area */
+/* Improved Input Text Area with Invisible Borders */
+#text-input {
+    width: 100%;
+    height: 100%; /* Ensure it occupies the full available space */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4rem;
+    background-color: #000;
+    color: #00ff00;
+    border: none; /* Make the border invisible */
+    border-radius: 5px; /* Keep the rounded corners */
+    padding: 10px; /* Add padding for better readability */
+    resize: none; /* Disable resizing to keep it consistent with design */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3); /* Softer glow for a polished look */
+    white-space: pre-wrap; /* Handle long lines gracefully */
+    word-break: break-word; /* Ensure long words wrap properly */
+    transition: box-shadow 0.3s ease; /* Smooth hover and focus effects */
+}
+
+/* Improved Scrollbars for Consistency */
+#text-input::-webkit-scrollbar,
+#output-section::-webkit-scrollbar {
+    width: 12px;
+    background-color: #333;
+}
+
+#text-input::-webkit-scrollbar-thumb,
+#output-section::-webkit-scrollbar-thumb {
+    background-color: #00ff00;
+    border-radius: 10px;
+}
+
+#text-input::-webkit-scrollbar-track,
+#output-section::-webkit-scrollbar-track {
+    background-color: #333;
+}
+
+/* Media Query Adjustments */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column; /* Stack the sections vertically */
+        width: 100%;
+    }
+    #input-section, #output-section {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+    body {
+        font-size: 1rem;
+    }
+}
+
+/* Enhanced Input Focus and Hover */
+#text-input:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6); /* Stronger glow on hover */
+}
+
+#text-input:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 20px rgba(255, 191, 0, 0.8); /* Golden focus glow with more prominence */
+}
+
+
+
+
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+#toggle-start-stop-button,
+#toggle-pause-resume-button,
+#clear-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #1e1e1e;
+    background-color: #00ff00;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex: 1;
+}
+
+#toggle-start-stop-button:hover,
+#toggle-pause-resume-button:hover,
+#clear-button:hover {
+    background-color: #00cc00;
+    transform: scale(1.05);
+}
+
+button:disabled {
+    background-color: #444;
+    cursor: not-allowed;
+}
+
+button:focus {
+    outline: 3px solid #ffbf00;
+    box-shadow: 0 0 5px #ffbf00;
+}
+
+/* Output Section */
+#output-section {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #000;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    resize: both;
+    overflow: auto;
+}
+
+#output {
+    white-space: pre-wrap;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    word-break: break-word; /* Ensure long lines wrap */
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1em; /* Consistent with font size */
+    background-color: #00ff00;
+    animation: blink 0.7s step-end infinite alternate;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Speed control section */
+#speed-control-section {
+    margin-top: 20px;
+    text-align: center;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+#speed-slider {
+    width: 100%;
+    background-color: #333;
+    cursor: pointer;
+}
+
+#speed-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #00ff00;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #333;
+}
+
+#speed-value {
+    font-weight: bold;
+}
+
+/* Scrollbar for output section */
+#output-section::-webkit-scrollbar {
+    width: 12px;
+}
+
+#output-section::-webkit-scrollbar-thumb {
+    background-color: #00ff00;
+    border-radius: 10px;
+}
+
+#output-section::-webkit-scrollbar-track {
+    background-color: #333;
+}
